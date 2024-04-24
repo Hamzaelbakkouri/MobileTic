@@ -9,15 +9,14 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('category', function (Blueprint $table) {
             $table->id();
             $table->string('nom');
-            $table->unsignedBigInteger('parent_id')->nullable();
+            // $table->unsignedBigInteger('parent_id')-;
             $table->timestamps();
-
-            $table->foreign('parent_id')->references('id')->on('category')->onDelete('cascade');
+            $table->foreignId('parent_id')->nullable()->references('id')->on('category')->onDelete('cascade');
         });
     }
 

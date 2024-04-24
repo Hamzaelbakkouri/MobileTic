@@ -9,17 +9,19 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('news', function (Blueprint $table) {
             $table->id();
-            $table->string('titre');
-            $table->text('contenu');
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('category')->onDelete('cascade');
-            $table->dateTime('date_debut');
-            $table->dateTime('date_expiration')->nullable();
+            $table->string('title');
+            $table->text('content');
+            $table->dateTime('start_date');
+            $table->dateTime('end_date')->nullable();
             $table->timestamps();
+        });
+
+        Schema::table('news', function (Blueprint $table) {
+            $table->foreignId('category_id')->references('id')->on('category')->onDelete('cascade');
         });
     }
 

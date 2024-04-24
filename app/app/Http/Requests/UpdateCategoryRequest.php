@@ -9,8 +9,8 @@ class UpdateCategoryRequest extends BaseFormRequest
     public function rules(): array
     {
         return [
-            "name" => "required",
-            "image" => "required"
+            "nom" => "required",
+            "parent_id" => "required"
         ];
     }
 

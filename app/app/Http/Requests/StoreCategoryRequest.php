@@ -10,8 +10,8 @@ class StoreCategoryRequest extends BaseFormRequest
     public function rules(): array
     {
         return [
-            "name" => "required | min:3 | max:30 | unique:categories",
-            "image" => "required | file"
+            "nom" => "required ",
+            "parent_id" => "required "
         ];
     }
 
